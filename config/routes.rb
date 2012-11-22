@@ -1,5 +1,24 @@
 MarshallklickmanCom::Application.routes.draw do
   
+
+# cancel_admin_registration GET    /admins/cancel(.:format)        devise/registrations#cancel
+#        admin_registration POST   /admins(.:format)               devise/registrations#create
+#    new_admin_registration GET    /admins/sign_up(.:format)       devise/registrations#new
+#   edit_admin_registration GET    /admins/edit(.:format)          devise/registrations#edit
+#                           PUT    /admins(.:format)               devise/registrations#update
+#                           DELETE /admins(.:format)               devise/registrations#destroy
+
+  devise_for :admins, :skip => [:registrations]
+  
+  as :admin do
+    get "admins/cancel(.:format)" => 'devise/registrations#cancel', :as => :cancel_admin_registration
+    post "admins(.:format)" => 'devise/registrations#create', :as => :admin_registration
+    get "make-new-admin" => 'devise/registrations#new', :as => :new_admin_registration
+    get "admins/edit" => 'devise/registrations#edit', :as => :edit_admin_registration
+    put "admins(.:format)" => 'devise/registrations#update'
+    delete "admins(.:format)" => 'devise/registrations#destroy'
+  end
+
   resources :posts
 
   root :to => "posts#index"
