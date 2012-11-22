@@ -44,8 +44,6 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    compass_twitter_bootstrap (2.0.3)
-      compass
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -116,7 +114,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
-  compass_twitter_bootstrap
   jquery-rails
   nifty-generators
   pg
