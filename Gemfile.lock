@@ -123,10 +123,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
-<<<<<<< HEAD
-=======
   devise
->>>>>>> Add authentication, edit devise routes, minimal styling
   jquery-rails
   nifty-generators
   pg
