@@ -21,14 +21,13 @@
     <div class="main container-fluid">
 
       <% if admin_signed_in? %>
-        <div class="admin-actions">
-          <p class="sign out">Signed in as <%= current_admin.email %></p>
-          <p><%= link_to "sign out", destroy_admin_session_path %></p>
-          <%= link_to "+ New Post", new_post_path, :class => "btn pull-right" %>
+        <div class="admin-actions row-fluid">
+          <%= link_to "sign out", destroy_admin_session_path, :class => "btn span6" %>
+          <%= link_to "+ New Post", new_post_path, :class => "btn span6" %>
         </div><!-- .admin-actions -->
       <% end %>
 
-      <h1><%= page_title %></h1>
+      <h1>Marshall Klickman</h1>
       <%= yield %>
     </div><!-- .main.container-fluid -->
   </body>

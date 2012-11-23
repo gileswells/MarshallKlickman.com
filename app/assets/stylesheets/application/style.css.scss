@@ -10,11 +10,21 @@
   @include filter-gradient(#eee, #ccc);
   @include background-image(linear-gradient(#eee, #ccc));
   @include border-radius(0 0 4px 4px);
-  @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.25));
-  border-bottom: 1px solid #888;
+  @include box-shadow(0 1px 5px rgba(0, 0, 0, 0.15));
+  @include inline-block;
+  border-bottom: 1px solid #a0a0a0;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 20px;
-  width: 250px;
+  padding: 1%;
+  width: 25%;
+}
+
+form {
+  width: 100%;
+
+  & > * {
+    display: block;
+    width: 100%;
+  }
 }
