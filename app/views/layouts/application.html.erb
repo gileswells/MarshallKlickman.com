@@ -9,6 +9,22 @@
     <%= yield(:head) %>
   </head>
   <body>
+
+    <div class="container-fluid">
+      <% if admin_signed_in? %>
+        <div class="navbar navbar-static-top">
+
+          <div class="navbar-inner">
+            <div class="center">
+              <ul class="nav">
+                <li><%= link_to "+ New Post", new_post_path, :class => "" %></li>
+                <li><%= link_to "sign out", destroy_admin_session_path, :method => :delete, :class => "" %></li>
+              </ul><!-- .nav -->
+            </div>
+          </div><!-- .navbar-inner -->
+
+        </div><!-- .navbar -->
+      <% end %>
     
     <% if flash %>
       <div class="flash-container">
@@ -18,17 +34,10 @@
       </div>
     <% end %>
 
-    <div class="main container-fluid">
-
-      <% if admin_signed_in? %>
-        <div class="admin-actions row-fluid">
-          <%= link_to "sign out", destroy_admin_session_path, :class => "btn span6" %>
-          <%= link_to "+ New Post", new_post_path, :class => "btn span6" %>
-        </div><!-- .admin-actions -->
-      <% end %>
+    <div class="center">
 
       <h1>Marshall Klickman</h1>
       <%= yield %>
-    </div><!-- .main.container-fluid -->
+    </div><!-- .main -->
   </body>
 </html>

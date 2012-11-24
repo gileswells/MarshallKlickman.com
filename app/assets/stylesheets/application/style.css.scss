@@ -1,6 +1,11 @@
 @import "compass";
 
-.main.container-fluid {
+.navbar-static-top {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.center {
   max-width: 1024px;
   margin: 0 auto;
   position: relative;
