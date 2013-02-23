@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'devise'
 gem 'nifty-generators', :group => :development
+gem 'newrelic_rpm'
 gem 'pg'
 
 
