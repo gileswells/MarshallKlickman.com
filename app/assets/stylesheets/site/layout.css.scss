@@ -1,0 +1,70 @@
+@import 'compass';
+
+body {
+  position: relative;
+}
+
+.container {
+  @include box-sizing(border-box);
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+  padding: 0 1em;
+}
+
+header {
+  padding: 1em 0;
+  width: 100%;
+  z-index: 100;
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 1em;
+}
+
+.site-title {
+  @include inline-block;
+  margin-bottom: 0.15em;
+}
+
+nav a {
+  margin-right: 2em;
+ 
+  &:last-child {
+    margin-right: 0;
+  } 
+}
+
+body.home {
+  text-align: center;
+}
+
+.welcome-message-intro {
+  margin: 0 0 1.25em;
+}
+
+.welcome-message-body {
+  margin-bottom: 3em;
+}
+
+.home-page-menu {
+
+  a {
+    display: block;
+  }
+}
+
+.home-page-menu__item {
+  margin-bottom: 1em;
+}
+
+.home-page-menu__item__title {
+  margin-bottom: 0.5em;
+}
+
+.admin-sign-out {
+  position: absolute;
+  top: 15px;
+  right: 0;
+}

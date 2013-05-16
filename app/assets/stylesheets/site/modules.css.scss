@@ -1,0 +1,91 @@
+@import "compass";
+
+html {
+  background: image-url('site-background.jpg') no-repeat top left fixed;
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+    & {
+      background-size: 800px 600px;
+    }
+  }
+}
+
+.fixed-site-background {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background: image-url('site-background.jpg') no-repeat top left;
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+    & {
+      background-size: 800px 600px;
+    }
+  }
+}
+
+
+.site-title {
+  font-size: 1.65em;
+
+  a {
+    color: #fffdc4;
+    font-family: Arvo;
+    font-weight: bold;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.site-tagline {
+  color: white;
+  font-family: Questrial;
+}
+
+nav {
+
+  a {
+    color: #fffdc4;
+    font-family: Arvo;
+    font-size: 1.15em;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.welcome-message-intro {
+  color: white;
+  font-family: Arvo;
+  font-size: 1.4em;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-message-body {
+  color: white;
+  font-family: Questrial;
+  font-size: 1.1em;
+  line-height: 1.25em;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.home-page-menu__item {
+  @include border-radius(7px);
+  @include box-shadow(0 2px 7px rgba(0, 0, 0, 0.35));
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5em 1em;
+}
+
+.home-page-menu__item__title {
+  color: #44668a;
+  font-family: Questrial;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 0 white;
+}
+
+.home-page-menu__item__text {
+  color: #636f7c;
+  font-family: Questrial;
+}

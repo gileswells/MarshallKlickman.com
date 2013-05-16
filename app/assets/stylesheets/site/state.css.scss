@@ -1,0 +1,35 @@
+@import 'compass';
+
+html.js {
+  background: transparent;
+
+  .fixed-site-background {
+    background: image-url('site-background.jpg') top left;
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 1600px;
+    height: 1200px;
+    z-index: -1
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+    .fixed-site-background {
+      background: image-url('site-background@2x.jpg');
+      background-size: 1600px 1200px;
+    }
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+
+    &.has-shadow {
+      @include box-shadow(0 15px 10px -10px rgba(0, 0, 0, 0.25));
+    }
+  }
+
+  .page-content {
+    padding-top: 45px;
+  }
+}

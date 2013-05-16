@@ -5,30 +5,41 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>
-  	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-  	<!-- Uncomment to make IE8 render like IE7 -->
-  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<!-- Set the viewport width to device width for mobile -->
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marshall Klickman | <%= content_for?(:title) ? yield(:title) : raw("Fighting The Ugly Web")%></title>
 
-  	<title><%= content_for?(:title) ? yield(:title) : raw("Fighting The UglyWeb&trade;")%> | Marshall Klickman</title>
+    <%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Questrial|Arvo:400,700" %>
+    <%= stylesheet_link_tag    "site" %>
 
-  	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%# javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body class="<%= body_class %>">
+    <div class="fixed-site-background"></div>
+    <%= link_to "Sign Out", destroy_admin_session_path, :class => "admin-sign-out" if admin_signed_in? %>
     <header>
-      <h1>Marshall Klickman</h1>
-      <p>Fighting the scourge of The UglyWeb&trade; with good design and better code</p>
+      <div class="container">
+        <div class="logo" role="banner">
+          <h1 class="site-title"><%= link_to "Marshall Klickman", :root %></h1>
+          <p class="site-tagline">fighting the ugly web with good design and better code</p>
+        </div><!-- .logo -->
+        <nav role="navigation">
+          <%= link_to "posts", posts_path %>
+          <%= link_to "work", projects_path %>
+          <%= link_to "about", about_page_path %>
+        </nav>
+      </div><!-- .container -->
     </header>
 
-    <%= yield %>
-
+    <div class="page-content container" role="main">
+      <%= yield %>
+    </div><!-- .page-content .container -->
     
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "site" %>
   </body>
 </html>

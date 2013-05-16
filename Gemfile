@@ -5,8 +5,10 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'decent_exposure'
 gem 'devise'
 gem 'newrelic_rpm'
+gem 'inherited_resources'
 gem 'pg'
 gem 'zurb-foundation', '~> 4.0.0'
 
@@ -18,6 +20,10 @@ group :assets do
   gem 'compass-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'xray-rails'
 end
 
 gem 'jquery-rails'

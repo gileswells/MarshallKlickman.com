@@ -1,0 +1,21 @@
+<h2 class="welcome-message-intro">Hi, I'm Marshall, and I create things on the web.</h2>
+
+<p class="welcome-message-body">I believe that the web is more about people than it is about technology. I work with one goal in mind – to make the technology easy to use so people can focus on each other.</p>
+
+<div class="home-page-menu" role="menu">
+  
+  <%= link_to posts_path, :class => "home-page-menu__item", :role => "menuitem" do %>
+    <h3 class="home-page-menu__item__title">My Writing</h3>
+    <p class="home-page-menu__item__text">I've learned a lot from other people who generously shared their thoughts. Writing is my way of paying it forward.</p>
+  <% end %>
+
+  <%= link_to projects_path, :class => "home-page-menu__item", :role => "menuitem" do %>
+    <h3 class="home-page-menu__item__title">My Work</h3>
+    <p class="home-page-menu__item__text">I can talk about what I do until I’m blue in the face, but since actions speak louder than words, I’d rather just show you.</p>
+  <% end %>
+
+  <%= link_to about_page_path, :class => "home-page-menu__item", :role => "menuitem" do %>
+    <h3 class="home-page-menu__item__title">My Self</h3>
+    <p class="home-page-menu__item__text">Find out what exactly I can do, get some back-story about how I got here, and find proof that I’m just as weird as you.</p>
+  <% end %>
+</div>

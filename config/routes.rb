@@ -19,9 +19,18 @@ MarshallklickmanCom::Application.routes.draw do
     delete "admins(.:format)" => 'devise/registrations#destroy'
   end
 
-  resources :posts
+  devise_scope :admin do
+    match "prettify" => "devise/sessions#create", :as => :new_admin_session
+    match "admin/sign-out" => "devise/sessions#destroy", :as => :destroy_admin_session
+  end
 
-  root :to => "posts#index"
+
+  resources :posts
+  resources :projects
+
+  match "/about" => "application#about", :as => :about_page
+
+  root :to => "application#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

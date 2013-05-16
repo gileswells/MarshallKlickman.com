@@ -1,13 +1,18 @@
 class PostsController < ApplicationController
+  expose(:post)
+  expose(:posts)
+
+  before_filter :signed_in?, :except => [:index, :show]
+
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    # @posts = Post.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: posts }
+    # end
   end
 
   # GET /posts/1
@@ -79,5 +84,9 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def signed_in?
+    redirect_to new_admin_session_path unless admin_signed_in?
   end
 end

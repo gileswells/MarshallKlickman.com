@@ -8,4 +8,8 @@ module ApplicationHelper
     end
   end
 
+  def body_class
+    return params[:controller] unless params[:controller] == 'application'
+    return params[:action]
+  end
 end
