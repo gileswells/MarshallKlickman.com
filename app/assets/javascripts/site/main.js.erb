@@ -1,0 +1,78 @@
+(function($) {
+    $('html').addClass('js');
+
+    
+
+    // Display current width of viewport (disabled in production)
+    //------------------------------------------------------------------------------------------------//
+
+    <% unless Rails.env.production? %>
+      $('body').append('<p class="viewport-width-counter"></p>');
+    <% end %>
+
+    if ($('p.viewport-width-counter').length) {
+      var $counter = $('p.viewport-width-counter');
+
+      $counter.css({
+        'position': 'fixed',
+        'top': 0,
+        'left': 0,
+        'padding': 5,
+        'border-radius': '0 0 3px 0',
+        'background': '#999',
+        'box-shadow': 'rgba(0, 0, 0, 0.6) 1px 1px 0px',
+        'color': 'white',
+        'z-index': 9999
+      });
+
+      var updateViewportWidthCounter = function() {
+        var width = $(window).width();
+
+        $counter.text(width + " | " + width/16);
+      }
+
+      updateViewportWidthCounter();
+      $(window).on('resize', updateViewportWidthCounter);
+    }
+
+
+
+
+    // Hide dat mobile address bar
+    setTimeout(function(){ window.scrollTo(0, 1); }, 0);
+
+    
+
+    // Offset page content based on height of fixed header
+    var setPageContentOffset = function() {
+      var headerHeight = $('header').outerHeight();
+
+      $('.page-content').css('margin-top', headerHeight);
+    }
+
+
+    // Show header bottom edge shadow when top of page
+    // content is no longer in view
+    var addScrollingShadow = function() {
+      var paddingTrigger = parseInt($('.page-content').css('padding-top'), 10);
+
+      if ($(window).scrollTop() >= paddingTrigger) {
+        $('header').addClass('has-shadow');
+      } else {
+        $('header.has-shadow').removeClass('has-shadow');
+      }
+    }
+
+    // Site title - FitText
+    $('.site-title').fitText( 1.15, {minFontSize: '10px', maxFontSize: '43px'} );
+
+    // Call functions on page load
+    setPageContentOffset();
+    addScrollingShadow();
+
+    // Bind functions to specific events
+    $(window).on('resize', setPageContentOffset);
+    $(window).on('scroll', addScrollingShadow);
+    $(window).on('touchmove', addScrollingShadow);
+
+})(jQuery);

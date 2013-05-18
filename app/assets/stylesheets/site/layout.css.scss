@@ -1,4 +1,5 @@
 @import 'compass';
+@import 'mixins';
 
 body {
   position: relative;
@@ -7,7 +8,6 @@ body {
 .container {
   @include box-sizing(border-box);
   margin: 0 auto;
-  max-width: 960px;
   position: relative;
   padding: 0 1em;
 }
@@ -24,7 +24,6 @@ header {
 }
 
 .site-title {
-  @include inline-block;
   margin-bottom: 0.15em;
 }
 
@@ -45,18 +44,14 @@ body.home {
 }
 
 .welcome-message-body {
-  margin-bottom: 3em;
-}
-
-.home-page-menu {
-
-  a {
-    display: block;
-  }
+  max-width: 28em;
+  margin: 0 auto 3em;
 }
 
 .home-page-menu__item {
-  margin-bottom: 1em;
+  display: block;
+  margin: 0 auto 1em;
+  max-width: 20.813em;
 }
 
 .home-page-menu__item__title {

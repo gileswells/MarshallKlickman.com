@@ -1,4 +1,5 @@
 @import 'compass';
+@import 'mixins';
 
 html.js {
   background: transparent;
@@ -31,5 +32,88 @@ html.js {
 
   .page-content {
     padding-top: 45px;
+  }
+}
+
+.container {
+  @include respond-to(fullsize) {
+    max-width: 64em;
+  }
+}
+
+header {
+  @include respond-to(fullsize) {
+    @include legacy-pie-clearfix;
+    text-align: left;
+  }
+}
+
+.logo {
+  @include respond-to(fullsize) {
+    @include inline-block;
+    float: left;
+    width: 25em;
+  }
+}
+
+.site-title {
+  @include respond-to(fullsize) {
+    
+    a {
+      display: block;
+      font-size: 1.1em;
+    }
+  }
+}
+
+nav {
+  @include respond-to(fullsize) {
+    float: right;
+    height: 3.5em;
+    line-height: 3.5em;
+
+    a {
+      font-size: 1.333em;
+    }
+  }
+}
+
+.welcome-message-intro {
+  @include respond-to(26.125em) {
+    font-size: 1.6em;
+  }
+
+  @include respond-to(fullsize) {
+    font-size: 1.9em;
+  }
+
+  @include respond-to(57em) {
+    font-size: 2.25em;
+  }
+}
+
+.welcome-message-body {
+  @include respond-to(26.125em) {
+    font-size: 1.4em;
+  }
+
+  @include respond-to(fullsize) {
+    font-size: 1.625em;
+  }
+
+  @include respond-to(57em) {
+    font-size: 1.875em;
+  }
+}
+
+.home-page-menu__item {
+  @include respond-to(fullsize) {
+    @include inline-block;
+    margin-right: 2%;
+    width: 27%;
+
+    &:last-child {
+      margin-right: 0;
+    } 
   }
 }
