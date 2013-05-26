@@ -1,1 +1,32 @@
-<h2>My Work</h2>
+<div class="content-panel">
+  <h2 class="content-panel__heading">Recent Work</h2>
+
+  <div class="content-panel__contents">
+    
+    <div class="dustpan">
+      <h4>Pardon <em>L&eacute; Dust</em></h4>
+      <p>I'm still getting moved in, so <del>the Death Star isn't fully operational</del> my full-blown portfolio isn't quite ready yet. In the meantime, here's some shots from <a href="http://dribbble.com/mklickman" target="_blank">my Dribbble&trade; profile.</a></p>
+      <h5>Enjoy!</h5>
+    </div><!-- .dustpan -->
+
+    <div class="dribbble-shots">
+      <% @player.shots.each do |shot| %>        
+        <%= link_to shot.url, :target => "_blank", :class => "single-shot" do %>
+          
+          <div class="single-shot__shot-image">
+            <div class="image-wrap">
+              <%= image_tag shot.image_url, :alt => shot.title %>
+            </div><!-- .image-wrap -->
+            <div class="single-shot__shot-image__shadow-overlay"></div>
+          </div><!-- .single-shot__shot-image -->
+          
+          <div class="single-shot__shot-title">
+            &quot;<%= shot.title %>&quot;
+          </div>
+
+        <% end %><!-- .single-shot -->
+      <% end %>
+    </div><!-- .dribbble-shots -->
+
+  </div><!-- .content-panel__contents -->
+</div><!-- .content-panel -->

@@ -215,8 +215,13 @@ nav {
     font-size: 1em;
   }
 
+  a {
+    color: #2966b1;
+  }
+}
 
-
+.content-panel p a {
+  text-decoration: underline;
 }
 
 .content-panel__heading {
@@ -308,9 +313,165 @@ p {
 
 body.posts {
 
+  .content-panel {
+    max-width: 39em;
+    margin: 0 auto;
+  }
+
   .content-panel__contents {
     text-align: center;
   }
+}
+
+.dustpan {
+  text-align: center;
+  max-width: 45em;
+  margin: 0 auto 2em;
+
+  p {
+    margin-bottom: 1.75em;
+
+    @include respond-to-max(20.95em) {
+      font-size: 0.9em;
+    }
+  }
+}
+
+.dribbble-shots {
+  @include legacy-pie-clearfix;
+  text-align: center;
+
+  //----------------------------------//
+  //   Set to be flex-box container   //
+  //----------------------------------//
+
+  // display: -webkit-box;   /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+  // display: -moz-box;      /* OLD: Firefox (buggy) */ 
+  // display: -ms-flexbox;   /* MID: IE 10 */
+  // display: -webkit-flex;  /* NEW, Chrome 21+ */
+  // display: flex;          /* NEW: Opera 12.1, Firefox 22+ */
+
+  // -webkit-flex-flow:  row wrap;
+  // -moz-flex-flow:     row wrap;
+  // -ms-flex-flow:      row wrap;
+  // flex-flow:          row wrap;
+
+  //  -webkit-box-align: center; -moz-box-align: center; /* OLD… */
+  //  -ms-flex-align: center; /* You know the drill now… */
+  //  -webkit-align-items: center;
+  //  align-items: center;
+
+  //  -webkit-box-pack: center; -moz-box-pack: center; 
+  //  -ms-flex-pack: center; 
+  //  -webkit-justify-content: center;
+  //  justify-content: center;
+}
+
+.single-shot {
+  @include legacy-pie-clearfix;
+  @include border-radius(0 0 3px 3px);
+  @include box-shadow(0 1px 7px rgba(0, 0, 0, 0.1));
+  display: -moz-inline-stack !important;
+  display: inline-block !important;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  max-width: 400px;
+  margin-bottom: 1.8em;
+  text-align: center;
+  width: 100%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include respond-to-min(473px) {
+    margin-right: 2em;
+    width: 45%;
+
+    &:nth-child(even) {
+      margin-right: 0;
+    }
+  }
+
+  @include respond-to-min(64em) {
+    width: 30%;
+
+    &:nth-child(even) {
+      margin-right: 2em;
+    }
+
+    &:nth-child(3n+3) {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 1.8em;
+    }
+  }
+
+  //-----------------------------------------//
+  //   Set to also be a flex-box container   //
+  //-----------------------------------------//
+
+  // display: -webkit-box;   /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+  // display: -moz-box;      /* OLD: Firefox (buggy) */ 
+  // display: -ms-flexbox;   /* MID: IE 10 */
+  // display: -webkit-flex;  /* NEW, Chrome 21+ */
+  // display: flex;          /* NEW: Opera 12.1, Firefox 22+ */
+
+  // -webkit-flex-flow:  column wrap;
+  // -moz-flex-flow:     column wrap;
+  // -ms-flex-flow:      column wrap;
+  // flex-flow:          column wrap;
+}
+
+.single-shot__shot-image {
+  @include legacy-pie-clearfix;
+  @include border-radius(3px 3px 0 0);
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  .image-wrap {
+    @include box-shadow(none);
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+}
+
+.single-shot__shot-image__shadow-overlay {
+  @include box-shadow(
+    0 1px 3px rgba(255, 255, 255, 0.5) inset,
+    0 -1px 1px 0px rgba(0, 0, 0, 0.1) inset,
+    1px 0px 2px -1px rgba(0, 0, 0, 0.15) inset,
+    -1px 0px 2px -1px rgba(0, 0, 0, 0.15) inset
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.single-shot__shot-title {
+  background: #E7F1F7;
+  color: #4C7383;
+  @include bg-grad(#E7F1F7, 2%);
+  @include border-radius(0 0 3px 3px);
+  @include box-shadow(
+    0 -1px 0 rgba(255, 255, 255, 0.5),
+    0 -1px 1px rgba(0, 0, 0, 0.25) inset
+  );
+  font-family: Questrial;
+  font-size: 0.92em;
+  padding: 0.6em 0;
+  text-align: center;
+  text-shadow: 1px 1px 0 white;
 }
 
 body.about {
