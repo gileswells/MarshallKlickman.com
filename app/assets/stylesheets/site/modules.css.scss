@@ -404,31 +404,31 @@ body.about {
   }
 
   .twitter {
-    @include bg-grad(#9ae4e8);
+    @include bg-grad(#9ae4e8, 5%, 3%);
     color: #226779;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
 	}
   
   .github {
-    @include bg-grad(#b8c7d0);
+    @include bg-grad(#b8c7d0, 5%, 3%);
     color: #4D4C4C;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
 	}
   
   .dribbble {
-    @include bg-grad(#ea4c89);
+    @include bg-grad(#ea4c89, 5%, 3%);
     color: #FFEDF4;
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
 	}
   
   .google-plus {
-		@include bg-grad(#d34836);
+		@include bg-grad(#d34836, 5%, 3%);
     color: white;
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
 	}
   
   .linkedin {
-		@include bg-grad(#1683bb);
+		@include bg-grad(#1683bb, 5%, 3%);
     color: #fff;
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.7);
 	}

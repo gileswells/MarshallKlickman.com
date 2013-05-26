@@ -27,7 +27,22 @@ $break-large: 48em;
   }
 }
 
-@mixin bg-grad($root-color, $amount: 5%) {
-  @include filter-gradient(lighten($root-color, $amount), darken($root-color, $amount));
-  @include background-image(linear-gradient(lighten($root-color, $amount), darken($root-color, $amount)));
+@mixin bg-grad($root-color, $amount: 5%, $hoverOffset: 0) {
+  
+  $start: lighten($root-color, $amount);
+  $end: darken($root-color, $amount);
+
+  @include filter-gradient($start, $end);
+  @include background-image(linear-gradient($start, $end));
+
+  @if ($hoverOffset != 0) {
+
+    $hoverStart: lighten($root-color, $amount + $hoverOffset);
+    $hoverEnd: darken($root-color, $amount - $hoverOffset);
+    
+    &:hover {
+      @include filter-gradient($hoverStart, $hoverEnd);
+      @include background-image(linear-gradient($hoverStart, $hoverEnd));      
+    }
+  }
 }
