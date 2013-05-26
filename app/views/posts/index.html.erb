@@ -2,17 +2,14 @@
   <h2 class="content-panel__heading">Recent Posts</h2>
 
   <div class="content-panel__contents">
-    <% if posts.length > 0 %>
-      <%= render :partial => "post", :collection => posts %>
-    <% else %>    
-        
-        <div class="image-wrap">
-          <%= image_tag "brace-yourselves.jpg" %>
-        </div>
+    <%# render :partial => "post", :collection => posts %>
 
-        <div class="image-wrap">
-          <%= image_tag "soon.jpg" %>
-        </div><!-- .image-wrap -->
-    <% end %>
+    <div class="image-wrap">
+      <%= image_tag "brace-yourselves.jpg" %>
+    </div>
+
+    <div class="image-wrap">
+      <%= image_tag "soon.jpg" %>
+    </div><!-- .image-wrap -->
   </div><!-- .content-panel__contents -->
 </div><!-- .content-panel -->
