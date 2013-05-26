@@ -1,6 +1,7 @@
 @import 'compass';
 
 $break-small: 20em;
+$break-max-large: 47.95em;
 $break-large: 48em;
 
 @mixin respond-to-min($media) {
@@ -20,7 +21,7 @@ $break-large: 48em;
     @media only screen and (max-width: $break-small) { @content; }
   }
   @else if $media == fullsize {
-    @media only screen and (max-width: $break-large) { @content; }
+    @media only screen and (max-width: $break-max-large) { @content; }
   }
   @else {
     @media only screen and (max-width: $media) { @content; }
