@@ -6,6 +6,7 @@ body {
 }
 
 .container {
+  @include legacy-pie-clearfix;
   @include box-sizing(border-box);
   margin: 0 auto;
   position: relative;
@@ -28,15 +29,78 @@ header {
 }
 
 nav a {
-  margin-right: 2em;
- 
+  @include respond-to-min(fullsize) {
+    margin-left: 2em;
+  }
+}
+
+.content-panel {
+  margin-bottom: 1em;
+
   &:last-child {
-    margin-right: 0;
-  } 
+    margin-bottom: 0;
+  }
+}
+
+@include respond-to-min(fullsize) {
+  .l-main-column {
+    float: left;
+    width: 66.5%;
+  }
+
+  .l-sidebar {
+    float: right;
+    width: 30%;
+  }
 }
 
 body.home {
   text-align: center;
+}
+
+body.about {
+  // @include respond-to-max(44.999em) {
+  //   .content-panel {
+  //     max-width: 26em;
+  //     margin: 0 auto 1em;
+  //   }
+  // }
+
+  @include respond-to-min(30em) {
+    .l-sidebar {
+      @include legacy-pie-clearfix;
+      padding-bottom: 1em;
+      
+      .personal-stats {
+        float: left;
+        width: 49%;
+      }
+
+      .third-party-profiles {
+        float: right;
+        width: 49%;
+      }
+    }
+  }
+
+  @include respond-to-min(45em) {
+    .l-main-column {
+      float: left;
+      width: 66.5%;
+    }
+
+    .l-sidebar {
+      float: right;
+      width: 30%;
+      padding-bottom: 0;
+
+      .personal-stats,
+      .third-party-profiles {
+        float: none;
+        width: auto;
+      }
+    }
+  }  
 }
 
 .welcome-message-intro {

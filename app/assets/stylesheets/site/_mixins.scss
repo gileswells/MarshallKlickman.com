@@ -3,9 +3,9 @@
 $break-small: 20em;
 $break-large: 48em;
 
-@mixin respond-to($media) {
+@mixin respond-to-min($media) {
   @if $media == handheld {
-    @media only screen and (max-width: $break-small) { @content; }
+    @media only screen and (min-width: $break-small) { @content; }
   }
   @else if $media == fullsize {
     @media only screen and (min-width: $break-large) { @content; }
@@ -13,4 +13,21 @@ $break-large: 48em;
   @else {
     @media only screen and (min-width: $media) { @content; }
   }
+}
+
+@mixin respond-to-max($media) {
+  @if $media == handheld {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == fullsize {
+    @media only screen and (max-width: $break-large) { @content; }
+  }
+  @else {
+    @media only screen and (max-width: $media) { @content; }
+  }
+}
+
+@mixin bg-grad($root-color, $amount: 5%) {
+  @include filter-gradient(lighten($root-color, $amount), darken($root-color, $amount));
+  @include background-image(linear-gradient(lighten($root-color, $amount), darken($root-color, $amount)));
 }

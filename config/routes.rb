@@ -28,9 +28,9 @@ MarshallklickmanCom::Application.routes.draw do
   resources :posts
   resources :projects
 
-  match "/about" => "application#about", :as => :about_page
+  match "/about" => "site#about", :as => :about_page
 
-  root :to => "application#home"
+  root :to => "site#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

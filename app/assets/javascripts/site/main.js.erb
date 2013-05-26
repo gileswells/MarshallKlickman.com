@@ -1,8 +1,18 @@
 (function($) {
-    $('html').addClass('js');
+    $('html').addClass('js-ready');
+
 
     
+    // Scroll past iPhone URL bar (and the like) on load
+    // Details --> http://remysharp.com/2010/08/05/doing-it-right-skipping-the-iphone-url-bar/
+    //------------------------------------------------------------------------------------------------//
 
+    // /mobi/i.test(navigator.userAgent) && !location.hash && setTimeout(function () {
+    //   if (!pageYOffset) window.scrollTo(0, 1);
+    // }, 1000);
+    
+
+    
     // Display current width of viewport (disabled in production)
     //------------------------------------------------------------------------------------------------//
 
@@ -15,12 +25,12 @@
 
       $counter.css({
         'position': 'fixed',
-        'top': 0,
+        'bottom': 0,
         'left': 0,
         'padding': 5,
-        'border-radius': '0 0 3px 0',
+        'border-radius': '0 3px 0 0',
         'background': '#999',
-        'box-shadow': 'rgba(0, 0, 0, 0.6) 1px 1px 0px',
+        'box-shadow': 'rgba(0, 0, 0, 0.2) 1px -1px 5px, rgba(0, 0, 0, 0.5) 1px -1px 0px',
         'color': 'white',
         'z-index': 9999
       });
@@ -37,42 +47,108 @@
 
 
 
+    // Disable default functionality for all anchors with href set to "#"
+    //------------------------------------------------------------------------------------------------//
+    $('a[href="#"]').on('click', function(event) {
+      if (!$(this).attr('tel')) {
+        event.preventDefault();
+      }
+    });
 
-    // Hide dat mobile address bar
-    setTimeout(function(){ window.scrollTo(0, 1); }, 0);
+
 
     
+    // Show and Hide off-canvas navigation when a trigger element is clicked
+    //------------------------------------------------------------------------------------------------//
 
-    // Offset page content based on height of fixed header
-    var setPageContentOffset = function() {
-      var headerHeight = $('header').outerHeight();
-
-      $('.page-content').css('margin-top', headerHeight);
+    var navHandler = function() {
+      $('html').toggleClass('js-nav');
     }
 
 
-    // Show header bottom edge shadow when top of page
-    // content is no longer in view
-    var addScrollingShadow = function() {
-      var paddingTrigger = parseInt($('.page-content').css('padding-top'), 10);
 
-      if ($(window).scrollTop() >= paddingTrigger) {
-        $('header').addClass('has-shadow');
+    // Set height of off-canvas nav equal to height of body
+    //------------------------------------------------------------------------------------------------//
+    
+    var setMobileNavHeight = function() {
+
+      if ($(window).width() <= 768) {
+        var bodyHeight = $('body').height();
+        var windowHeight = $(window).height();
+
+        if (bodyHeight > windowHeight) {
+          $('nav').css('height', bodyHeight);
+        } else {
+          $('nav').css('height', windowHeight);
+          $('body, outer-wrap').css({
+            'min-height': windowHeight,
+            'height': windowHeight
+          });
+        }
       } else {
-        $('header.has-shadow').removeClass('has-shadow');
+        $('nav[style]').removeAttr('style');
       }
     }
 
-    // Site title - FitText
-    $('.site-title').fitText( 1.15, {minFontSize: '10px', maxFontSize: '43px'} );
+
+
+
+    // Remove 300ms touch delay on links/buttons via fastclick.js
+    //------------------------------------------------------------------------------------------------//
+
+    $(window).on('load', function() {
+      new FastClick(document.body);
+    });
+
+
+
 
     // Call functions on page load
-    setPageContentOffset();
-    addScrollingShadow();
+    //------------------------------------------------------------------------------------------------//
 
+    
     // Bind functions to specific events
-    $(window).on('resize', setPageContentOffset);
-    $(window).on('scroll', addScrollingShadow);
-    $(window).on('touchmove', addScrollingShadow);
+    //------------------------------------------------------------------------------------------------//
+      $('.js-nav-trigger').on('click', navHandler);
+      $(window).on('load resize', setMobileNavHeight);
 
 })(jQuery);
+
+
+//-------------------------------------------------------------------------------------------------------//
+// Not using these ATM                                                                                   //
+//-------------------------------------------------------------------------------------------------------//
+
+// Offset page content based on height of fixed header
+//-------------------------------------------------------------------------------//
+
+// var setPageContentOffset = function() {
+//   var $pageContent = $('.page-content');
+//   //var origPadding = parseInt($pageContent.css('padding-top'), 10);
+//   var origPadding = 45;
+//   var headerHeight = $('header').outerHeight();
+//   var newPadding = origPadding + headerHeight;
+
+//   console.log('origPadding: ', origPadding);
+//   console.log('headerHeight: ', headerHeight);
+//   console.log('newPadding: ', newPadding);
+//   console.log("");
+
+//   $pageContent.css('padding-top', origPadding).css('padding-top', newPadding);
+// }
+
+
+
+
+// Show header bottom edge shadow when top of page content is no longer in view
+//---------------------------------------------------------------------------------//
+
+// var addScrollingShadow = function() {
+//   var paddingTrigger = parseInt($('.page-content').css('padding-top'), 10);
+
+//   if ($(window).scrollTop() >= paddingTrigger) {
+//     $('header').addClass('has-shadow');
+//   } else {
+//     $('header.has-shadow').removeClass('has-shadow');
+//   }
+// }

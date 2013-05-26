@@ -3,12 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_headers
 
-  def home
-  end
-
-  def about
-  end
-
   protected
 
   def set_headers

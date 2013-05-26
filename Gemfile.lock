@@ -117,6 +117,8 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (1.1.1)
+      coffee-rails
     tzinfo (0.3.33)
     uglifier (1.2.7)
       execjs (>= 0.3.0)
@@ -143,6 +145,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
+  turbolinks
   uglifier (>= 1.0.3)
   xray-rails
   zurb-foundation (~> 4.0.0)

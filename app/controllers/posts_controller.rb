@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsController < SiteController
   expose(:post)
   expose(:posts)
 

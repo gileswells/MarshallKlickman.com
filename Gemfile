@@ -10,6 +10,7 @@ gem 'devise'
 gem 'newrelic_rpm'
 gem 'inherited_resources'
 gem 'pg'
+gem 'turbolinks'
 gem 'zurb-foundation', '~> 4.0.0'
 
 

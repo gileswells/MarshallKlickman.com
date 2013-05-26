@@ -1,7 +1,7 @@
 @import 'compass';
 @import 'mixins';
 
-html.js {
+html.js-ready {
   background: transparent;
 
   .fixed-site-background {
@@ -21,93 +21,311 @@ html.js {
     }
   }
 
-  header {
-    position: fixed;
-    top: 0;
+  @include respond-to-max(fullsize) {
 
-    &.has-shadow {
-      @include box-shadow(0 15px 10px -10px rgba(0, 0, 0, 0.25));
+    nav {
+      @include box-shadow(
+        0 0 9px rgba(0, 0, 0, 0.5),
+        1px 0 1px rgba(255, 255, 255, 0.35) inset
+      );
+      background: rgba(0, 0, 0, 0.25);
+      position: absolute;
+      width: 15.65em;
+      top: 0;
+      right: -16em;
+    }
+
+    &.csstransforms3d.csstransitions {
+
+      header .container,
+      .inner-wrap {
+        right: 0 !important;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transition: -webkit-transform 500ms ease;
+        -moz-transition: -moz-transform 500ms ease;
+        -o-transition: -o-transform 500ms ease;
+        transition: transform 500ms ease;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
     }
   }
 
   .page-content {
     padding-top: 45px;
+
+    @include respond-to-max(fullsize) {
+      padding-bottom: 1em;
+    }
+  }
+}
+
+html.js-nav {
+
+  header .container {
+    // right: 70%;
+  }
+
+  .inner-wrap {
+    right: 16em;
+  }
+
+  &.csstransforms3d.csstransitions {
+
+    .inner-wrap {
+      -webkit-transform: translate3d(-16em, 0, 0);
+      -moz-transform: translate3d(-16em, 0, 0);
+      -ms-transform: translate3d(-16em, 0, 0);
+      -o-transform: translate3d(-16em, 0, 0);
+      transform: translate3d(-16em, 0, 0);
+    }
+  }
+
+  &.js-ready header .nav-trigger {
+     padding: 0.05em 5.5% 0 0.2em !important;
   }
 }
 
 .container {
-  @include respond-to(fullsize) {
+  @include respond-to-min(fullsize) {
     max-width: 64em;
   }
 }
 
 header {
-  @include respond-to(fullsize) {
+
+  html.js-ready & {
+    // @include legacy-pie-clearfix;
+    // position: fixed;
+    // top: 0;
+
+    @include respond-to-max(fullsize) {
+      padding-bottom: 0;
+    
+      .logo {
+        float: left;
+        text-align: left;
+        width: 13em;
+
+        @include respond-to-min(26em) {
+          width: 16em;
+        }
+
+        @include respond-to-min(30em) {
+          width: 21em;
+        }
+      }
+
+      .site-title {
+        font-size: 1.2em;
+
+        @include respond-to-min(26em) {
+          font-size: 1.5em;
+        }
+
+        @include respond-to-min(30em) {
+          font-size: 2em; 
+        }
+      }
+
+      .site-tagline {
+        font-size: 0.8em;
+      }
+
+      .nav-trigger {
+        @include border-radius(3px 0 0 3px);
+        @include box-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+        background: rgba(255, 255, 255, 0.8);
+        color: #86A6B3;
+        cursor: pointer;
+        display: block;
+        font-family: entypo;
+        font-size: 4em;
+        float: right;
+        line-height: 0.8em;
+        padding: 0.05em 6% 0 0.2em;
+        position: absolute;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+        top: 0;
+        right: -2%;
+
+        -webkit-transition: -webkit-transform 500ms ease;
+        -moz-transition: -moz-transform 500ms ease;
+        -o-transition: -o-transform 500ms ease;
+        transition: transform 500ms ease;
+
+        &:hover {
+          padding: 0.05em 7% 0 0.2em;
+        }
+
+        @include respond-to-max(26em) {
+          line-height: 0.73em;
+        }
+
+        html.lt-ie10 & {
+          line-height: 1em !important;
+        }
+      }
+
+      nav {
+        @include respond-to-max(fullsize) {
+          padding: 5em 0 0;
+        }
+      }
+
+      .nav-item {
+        @include respond-to-max(fullsize) {
+          @include box-shadow(0 -1px 0 rgba(0, 0, 0, 0.25) inset);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+          font-size: 1.5em;
+          margin-bottom: 0.5em;
+          padding-bottom: 0.6em;
+          padding-left: 1em;
+          text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.75);
+          width: 100%;
+
+          &:first-child {
+            @include box-shadow(
+              0 -1px 0 rgba(0, 0, 0, 0.25),
+              0 -1px 0 rgba(0, 0, 0, 0.25) inset
+            );
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            padding-top: 0.6em;
+
+            @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+              @include box-shadow(
+                0 -1px 1px rgba(0, 0, 0, 0.25),
+                0 -1px 1px rgba(0, 0, 0, 0.25) inset
+              );
+            }
+          }
+
+          @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+            @include box-shadow(0 -1px 1px rgba(0, 0, 0, 0.25) inset);
+            text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.45);
+          }
+        }
+      }
+
+      .close-off-canvas-nav {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 3em;
+        display: block;
+        text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0.25em;
+        right: 0.35em;
+
+        @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+          text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+
+    &.has-shadow {
+      @include box-shadow(0 15px 10px -10px rgba(0, 0, 0, 0.25));
+    } 
+  }
+    
+  @include respond-to-min(fullsize) {
     @include legacy-pie-clearfix;
     text-align: left;
   }
 }
 
 .logo {
-  @include respond-to(fullsize) {
+  @include respond-to-min(fullsize) {
     @include inline-block;
     float: left;
-    width: 25em;
+    width: 27em;
   }
 }
 
 .site-title {
-  @include respond-to(fullsize) {
+
+  @include respond-to-min(handheld) {
+    font-size: 1.7em;
+  }
+
+  @include respond-to-min(31.125em) {
+    font-size: 2.5em;
     
     a {
       display: block;
-      font-size: 1.1em;
     }
   }
 }
 
+.site-tagline {
+  @include respond-to-min(31.125em) {
+    font-size: 1em;
+  }
+}
+
 nav {
-  @include respond-to(fullsize) {
+  @include respond-to-min(fullsize) {
     float: right;
     height: 3.5em;
     line-height: 3.5em;
 
-    a {
+    .nav-item {
       font-size: 1.333em;
+    }
+  }
+
+  html.js-ready & {
+    
+    @include respond-to-max(fullsize) {
+      @include box-sizing(border-box);
+      height: 100%;
+      padding: 1em;
+      text-align: left;
+      top: -1em;
+
+      .nav-item {
+        display: block;
+      }
     }
   }
 }
 
 .welcome-message-intro {
-  @include respond-to(26.125em) {
+  @include respond-to-min(26.125em) {
     font-size: 1.6em;
   }
 
-  @include respond-to(fullsize) {
+  @include respond-to-min(fullsize) {
     font-size: 1.9em;
   }
 
-  @include respond-to(57em) {
+  @include respond-to-min(57em) {
     font-size: 2.25em;
   }
 }
 
 .welcome-message-body {
-  @include respond-to(26.125em) {
+  @include respond-to-min(26.125em) {
     font-size: 1.4em;
   }
 
-  @include respond-to(fullsize) {
+  @include respond-to-min(fullsize) {
     font-size: 1.625em;
   }
 
-  @include respond-to(57em) {
+  @include respond-to-min(57em) {
     font-size: 1.875em;
   }
 }
 
 .home-page-menu__item {
-  @include respond-to(fullsize) {
+  @include respond-to-min(fullsize) {
     @include inline-block;
     margin-right: 2%;
     width: 27%;

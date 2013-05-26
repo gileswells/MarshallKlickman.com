@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7 lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9 lt-ie10" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <title>Marshall Klickman | <%= content_for?(:title) ? yield(:title) : raw("Fighting The Ugly Web")%></title>
+
+    <%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Questrial|Arvo:400,700" %>
+    <%= stylesheet_link_tag    "site" %>
+
+    <%# javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="<%= body_class %>">
+    
+    <script>
+      // Scroll past iPhone URL bar (and the like) on load
+      // Details --> http://remysharp.com/2010/08/05/doing-it-right-skipping-the-iphone-url-bar/
+      //------------------------------------------------------------------------------------------------//
+
+      /mobi/i.test(navigator.userAgent) && !location.hash && setTimeout(function () {
+        if (!pageYOffset) window.scrollTo(0, 1);
+      }, 1000);
+    </script>
+
+    <div class="outer-wrap">
+      <div class="fixed-site-background"></div>
+      <div class="inner-wrap">
+        <%= link_to "Sign Out", destroy_admin_session_path, :class => "admin-sign-out" if admin_signed_in? %>
+        <header>
+          <div class="container">
+            <div class="logo" role="banner">
+              <h1 class="site-title"><%= link_to "Marshall Klickman", :root %></h1>
+              <p class="site-tagline">Fighting the Ugly Web With Good Design and Better Code</p>
+            </div><!-- .logo -->
+            <a href="#" class="nav-trigger js-nav-trigger">&#9776;</a>
+            <nav role="navigation">
+              <%= link_to "posts", posts_path, :class => "nav-item" %>
+              <%= link_to "work", projects_path, :class => "nav-item" %>
+              <%= link_to "about", about_page_path, :class => "nav-item" %>
+
+              <%= render "site/contact_info" %>
+
+              <a href="#" class="close-off-canvas-nav js-nav-trigger">&#215;</a>
+            </nav>
+          </div><!-- .container -->
+        </header>
+
+        <div class="page-content container" role="main">
+          <%= yield %>
+        </div><!-- .page-content .container -->
+
+        <footer>
+          <%= render "site/contact_info" %>
+        </footer>
+      
+      </div><!-- .inner-wrap -->
+    </div><!-- .outer-wrap -->
+    <%= javascript_include_tag "site" %>
+  </body>
+</html>
