@@ -29,6 +29,7 @@ MarshallklickmanCom::Application.routes.draw do
   resources :projects
 
   match "/about" => "site#about", :as => :about_page
+  match "/work" => "projects#index", :as => :projects
 
   root :to => "site#home"
 

@@ -500,12 +500,24 @@ body.about {
     }
 
     @include respond-to-min(27em) {
-      padding-left: 2em;
 
-      p:last-child {
-        padding-bottom: 0;
+      p {
+        padding-left: 2em;
+        
+        &:last-child {
+          padding-bottom: 0;
+        }
       }
     }
+  }
+
+  .headshot-2x {
+    display: none;
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+    .headshot-1x { display: none; }
+    .headshot-2x { display: block; }
   }
 }
 
