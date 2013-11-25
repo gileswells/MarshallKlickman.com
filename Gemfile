@@ -5,8 +5,10 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'acts-as-taggable-on'
 gem 'decent_exposure'
 gem 'devise'
+gem 'friendly_id'
 gem 'newrelic_rpm'
 gem 'inherited_resources'
 gem 'pg'

@@ -7,12 +7,18 @@ class PostsController < SiteController
   # GET /posts
   # GET /posts.json
   def index
-    # @posts = Post.all
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = Post.all
+    end
 
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render json: posts }
-    # end
+    @tags = Post.tag_counts_on(:tags)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: posts }
+    end
   end
 
   # GET /posts/1
@@ -49,7 +55,7 @@ class PostsController < SiteController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to root_url, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }

@@ -25,6 +25,7 @@ MarshallklickmanCom::Application.routes.draw do
   end
 
 
+  get 'posts/tagged/:tag', :to => 'posts#index', :as => :tagged_posts
   resources :posts
   resources :projects
 

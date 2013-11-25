@@ -1,4 +1,4 @@
-<h2>New Post</h2>
+<h2>Edit Post</h2>
 
 <% if @post.errors.any? %>
   <ul>
@@ -9,7 +9,7 @@
 <% end %>
 
 <%= form_for @post do |f| %> 
-  
+
   <div class="form-row">
     <%= f.label :title %> 
     <%= f.text_field :title, :placeholder => "title" %>
@@ -28,7 +28,7 @@
   <div class="form-row">  
     <%= f.label :draft, "Save this post a draft" %>
     <%= f.check_box :draft %>
-  </div><!-- .form-row-->  
+  </div><!-- .form-row-->
 
   <div class="form-row">
     <%= f.label :content %> 
@@ -36,7 +36,7 @@
   </div><!-- .form-row-->
 
   <div class="form-row">
-    <%= f.submit "Publish Post" %>
+    <%= f.submit "Update Post" %>
   </div><!-- .form-row-->
 
 <% end %>

@@ -1,15 +1,38 @@
-<div class="content-panel">
+<div class="content-panel l-main-column">
   <h2 class="content-panel__heading">Recent Posts</h2>
 
   <div class="content-panel__contents">
     <%# render :partial => "post", :collection => posts %>
 
-    <div class="image-wrap">
-      <%= image_tag "brace-yourselves.jpg" %>
-    </div>
+    <% @posts.each do |post| %>
+      <h3> <%= post.title %> </h3>
+      <small> <%= post.tag_list %> </small>
+      <p> <%= post.content %> </p>
+      <br><br>
+    <% end %>
 
-    <div class="image-wrap">
-      <%= image_tag "soon.jpg" %>
-    </div><!-- .image-wrap -->
+    <% if @posts.empty? %>
+      <div class="image-wrap">
+        <%= image_tag "brace-yourselves.jpg" %>
+      </div>
+
+      <div class="image-wrap">
+        <%= image_tag "soon.jpg" %>
+      </div><!-- .image-wrap -->
+    <% end %>
+
   </div><!-- .content-panel__contents -->
 </div><!-- .content-panel -->
+
+<div class="l-sidebar">
+  <div class="content-panel no-padding">
+    <h2 class="content-panel__heading">Filter by Category</h2>
+    <div class="content-panel__contents">
+      <ul>
+        <% @tags.each do |tag| %>
+          <li><%= link_to tag.name, tagged_posts_path(tag.name.downcase) %></li>
+        <% end %>
+      </ul>
+    </div><!-- .content-panel__contents -->
+  </div><!-- .content-panel -->
+</div><!-- .l-sidebar -->
