@@ -1,5 +1,10 @@
 MarshallklickmanCom::Application.routes.draw do
   
+  match "journal/goto_date" => "journal_entries#goto_date", :via => [:get, :post]
+  match "journal/:month/:day" => "journal_entries#index",
+    :constraints => { :month => /\d{1,2}/, :day => /\d{1,2}/ },
+    :as => :journal_entries_date
+  resources :journal_entries, :path => "/journal"
 
 # cancel_admin_registration GET    /admins/cancel(.:format)        devise/registrations#cancel
 #        admin_registration POST   /admins(.:format)               devise/registrations#create

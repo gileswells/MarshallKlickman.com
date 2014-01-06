@@ -5,9 +5,9 @@
     <%# render :partial => "post", :collection => posts %>
 
     <% @posts.each do |post| %>
-      <h3> <%= post.title %> </h3>
-      <small> <%= post.tag_list %> </small>
-      <p> <%= post.content %> </p>
+      <h3><%= link_to post.title, post_path(post) %></h3>
+      <small><%= post.tag_list %></small>
+      <p><%= post.content %></p>
       <br><br>
     <% end %>
 
@@ -32,6 +32,9 @@
         <% @tags.each do |tag| %>
           <li><%= link_to tag.name, tagged_posts_path(tag.name.downcase) %></li>
         <% end %>
+        <li>
+          <%= link_to "clear filters", posts_path %>
+        </li>
       </ul>
     </div><!-- .content-panel__contents -->
   </div><!-- .content-panel -->

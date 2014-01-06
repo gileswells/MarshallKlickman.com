@@ -1,0 +1,43 @@
+<div class="content-panel l-main-column">
+
+  <h3 class="content-panel__heading current-date-heading">
+    <span class="date-nav prev"> <%= link_to "< prev", "/journal/goto_date?full_date=#{@selected_date.yesterday}" %> </span>
+    <%= @selected_date.strftime("%B #{@selected_date.day.ordinalize}") %>
+    <span class="date-nav next"> <%= link_to "next >", "/journal/goto_date?full_date=#{@selected_date.tomorrow}" %> </span>
+  </h3>
+  <div class="content-panel__contents">
+
+    <% if params[:month] && params[:day] %>
+      
+      <% @journal_entries_date.each do |entry| %>
+        <div class="entry">
+          <h4><%= entry.date %></h4>
+          <p><%= entry.content %></p>
+        </div><!-- .entry -->
+      <% end %>
+    
+    <% else %>
+      
+      <% @journal_entries_today.each do |entry| %>
+        <div class="entry">
+          <h4><%= entry.date %></h4>
+          <p><%= entry.content %></p>
+        </div><!-- .entry -->
+      <% end %>
+    
+    <% end %>
+
+  </div><!-- .content-panel__contents -->
+</div>
+
+<div class="l-sidebar">
+  <div class="content-panel">
+    <%= form_tag "/journal/goto_date", method: "post" do %>
+      <%= label_tag "date[month]", "Select a Date" %>
+      <%= select_month(@selected_date, :prefix => "", :field_name => "month") %>
+      <%= select_day(@selected_date, :prefix => "", :field_name => "day") %>
+      <%= submit_tag "Go" %>
+      <%= link_to "Go to Today", "/journal/goto_date?month=#{Time.now.month}&day=#{Time.now.day}" %>
+    <% end %>
+  </div><!-- .content-panel -->
+</div><!-- .l-sidebar -->

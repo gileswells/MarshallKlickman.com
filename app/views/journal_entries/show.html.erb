@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @journal_entry.date %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @journal_entry.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_journal_entry_path(@journal_entry) %> |
+<%= link_to 'Back', journal_entries_path %>

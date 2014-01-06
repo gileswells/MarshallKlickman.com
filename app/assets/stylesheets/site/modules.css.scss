@@ -621,6 +621,30 @@ body.about {
 
 
 
+body.journal_entries {
+
+  .current-date-heading {
+    text-align: center;
+  }
+
+  .date-nav {
+    @include inline-block;
+    font-size: 60%;
+    text-decoration: none;
+    position: relative;
+    top: -3px;
+
+    &.prev {
+      margin-right: 15%;
+    }
+
+    &.next {
+      margin-left: 15%;
+    }
+  }
+}
+
+
 
 
 

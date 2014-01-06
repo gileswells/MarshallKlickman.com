@@ -8,7 +8,7 @@
 </ul>
 <% end %>
 
-<%= form_for @post do |f| %> 
+<%= form_for @post, :html => { :multipart => true } do |f| %> 
   
   <div class="form-row">
     <%= f.label :title %> 
@@ -16,8 +16,8 @@
   </div><!-- .form-row-->
 
   <div class="form-row">
-    <%= f.label :featured_image_url %> 
-    <%= f.text_field :featured_image_url, :placeholder => "Featured Image URL" %>
+    <%= f.label :featured_image %> 
+    <%= f.url_field :featured_image_url, :placeholder => "Enter a URL" %>
   </div><!-- .form-row-->
   
   <div class="form-row">  
@@ -28,7 +28,7 @@
   <div class="form-row">  
     <%= f.label :draft, "Save this post a draft" %>
     <%= f.check_box :draft %>
-  </div><!-- .form-row-->  
+  </div><!-- .form-row-->
 
   <div class="form-row">
     <%= f.label :content %> 
