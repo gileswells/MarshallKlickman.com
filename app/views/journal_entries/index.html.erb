@@ -1,28 +1,22 @@
 <div class="content-panel l-main-column">
 
   <h3 class="content-panel__heading current-date-heading">
-    <span class="date-nav prev"> <%= link_to "< prev", "/journal/goto_date?full_date=#{@selected_date.yesterday}" %> </span>
+    <span class="date-nav prev"> <%= link_to "< yesterday", "/journal/goto_date?full_date=#{@selected_date.yesterday}" %> </span>
     <%= @selected_date.strftime("%B #{@selected_date.day.ordinalize}") %>
-    <span class="date-nav next"> <%= link_to "next >", "/journal/goto_date?full_date=#{@selected_date.tomorrow}" %> </span>
+    <span class="date-nav next"> <%= link_to "tomorrow >", "/journal/goto_date?full_date=#{@selected_date.tomorrow}" %> </span>
   </h3>
   <div class="content-panel__contents">
 
     <% if params[:month] && params[:day] %>
       
       <% @journal_entries_date.each do |entry| %>
-        <div class="entry">
-          <h4><%= entry.date %></h4>
-          <p><%= entry.content %></p>
-        </div><!-- .entry -->
+        <%= render :partial => "journal_entries/entry", :locals => {:entry => entry} %>
       <% end %>
     
     <% else %>
       
       <% @journal_entries_today.each do |entry| %>
-        <div class="entry">
-          <h4><%= entry.date %></h4>
-          <p><%= entry.content %></p>
-        </div><!-- .entry -->
+        <%= render :partial => "journal_entries/entry", :locals => {:entry => entry} %>
       <% end %>
     
     <% end %>
@@ -32,7 +26,7 @@
 
 <div class="l-sidebar">
   <div class="content-panel">
-    <%= form_tag "/journal/goto_date", method: "post" do %>
+    <%= form_tag "/journal/goto_date", :class => "date-picker", method: "post" do %>
       <%= label_tag "date[month]", "Select a Date" %>
       <%= select_month(@selected_date, :prefix => "", :field_name => "month") %>
       <%= select_day(@selected_date, :prefix => "", :field_name => "day") %>

@@ -2,8 +2,8 @@ class JournalEntriesController < SiteController
   before_filter :signed_in?
 
   def index
-    @journal_entries_today = JournalEntry.where("EXTRACT(MONTH FROM date) = ? and EXTRACT(DAY FROM date) = ?", Time.now.strftime("%m"), Time.now.strftime("%d"))
-    @journal_entries_date = JournalEntry.where("EXTRACT(MONTH FROM date) = ? and EXTRACT(DAY FROM date) = ?", params[:month], params[:day])
+    @journal_entries_today = JournalEntry.where("EXTRACT(MONTH FROM date) = ? and EXTRACT(DAY FROM date) = ?", Time.now.strftime("%m"), Time.now.strftime("%d")).order('date ASC')
+    @journal_entries_date = JournalEntry.where("EXTRACT(MONTH FROM date) = ? and EXTRACT(DAY FROM date) = ?", params[:month], params[:day]).order('date ASC')
     
     unless params[:month] && params[:day] 
       @selected_date = Time.now

@@ -1,0 +1,8 @@
+<div class="entry">
+  <h4 class="entry-year">
+    <% entry.date.strftime("%Y").each_char do |c| %>
+      <span><%= c %></span>
+    <% end %>
+  </h4>
+  <p class="entry-content"><span class="weekday"> <%= entry.date.strftime("%A - ") %></span><%= entry.content %></p>
+</div><!-- .entry -->
