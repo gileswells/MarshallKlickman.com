@@ -50,6 +50,27 @@ class JournalEntriesController < SiteController
     end
   end
 
+  # GET /journal/1/edit
+  def edit
+    @journal_entry = JournalEntry.find(params[:id])
+  end
+
+  # PUT /posts/1
+  # PUT /posts/1.json
+  def update
+    @journal_entry = JournalEntry.find(params[:id])
+
+    respond_to do |format|
+      if @journal_entry.update_attributes(params[:journal_entry])
+        format.html { redirect_to @journal_entry, notice: 'Entry was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @journal_entry.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   protected
 
   def signed_in?

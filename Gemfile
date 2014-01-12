@@ -30,6 +30,7 @@ gem 'zurb-foundation', '~> 4.0.0'
 
 group :development do
   gem 'xray-rails'
+  gem 'meta_request'
 end
 
 gem 'jquery-rails'

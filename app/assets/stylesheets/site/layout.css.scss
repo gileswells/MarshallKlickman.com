@@ -40,6 +40,51 @@ nav a {
   &:last-child {
     margin-bottom: 0;
   }
+
+  form {
+
+    .field {
+      margin-bottom: 1.5em;
+
+      label {
+        margin-bottom: 0.25em;
+      }
+    }
+
+    .date-select-field select {
+      @include inline-block;
+      @include box-sizing(border-box);
+      margin-right: 2%;
+      font-size: 2em;
+      
+      &:nth-child(2) {
+        width: 45%;
+      }
+
+      &:nth-child(3) {
+        width: 30%;
+      }
+
+      &:nth-child(4) {
+        margin-right: 0;
+        width: 18%;
+      }
+
+    }
+
+    .text-field {
+      @include box-sizing(border-box);
+      width: 100%;
+    }
+
+    .actions {
+      text-align: right;
+
+      .cancel-link {
+        margin-right: 1em;
+      }
+    }
+  }
 }
 
 @include respond-to-min(fullsize) {
@@ -123,8 +168,22 @@ body.about {
   padding: 0;
 }
 
-.admin-sign-out {
-  position: absolute;
-  top: 15px;
-  right: 0;
+body.journal_entries {
+
+  &.new {
+
+    .content-panel {
+      max-width: 48em;
+      margin: 0 auto;
+    }
+  }
 }
+
+
+
+
+
+
+
+
+

@@ -9,8 +9,13 @@ module SiteHelper
   end
 
   def body_class
-    return params[:controller] unless params[:controller] == 'site'
-    return params[:action]
+
+    class_string = []
+    
+    class_string << params[:controller] unless params[:controller] == 'site'
+    class_string << params[:action]
+
+    return class_string.join(" ")
   end
 
   def years_married

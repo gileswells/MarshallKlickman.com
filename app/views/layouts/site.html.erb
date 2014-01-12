@@ -43,7 +43,11 @@
     <div class="outer-wrap">
       <div class="fixed-site-background"></div>
       <div class="inner-wrap">
-        <%= link_to "Sign Out", destroy_admin_session_path, :class => "admin-sign-out" if admin_signed_in? %>
+        <% if admin_signed_in? %>
+          <div class="admin-header">
+            <%= render 'layouts/admin_links' %>
+          </div><!-- .admin-header -->
+        <% end %>
         <header>
           <div class="container">
             <div class="logo" role="banner">
@@ -55,6 +59,12 @@
               <%= link_to "posts", posts_path, :class => "nav-item" %>
               <%= link_to "work", projects_path, :class => "nav-item" %>
               <%= link_to "about", about_page_path, :class => "nav-item" %>
+
+              <% if admin_signed_in? %>
+                <div class="mobile-admin-links">
+                  <%= render 'layouts/admin_links' %>
+                </div>
+              <% end %>
 
               <%= render "site/contact_info" %>
 

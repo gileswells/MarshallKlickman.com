@@ -188,6 +188,7 @@ header {
           font-size: 1.5em;
           padding: 0.6em 0 0.6em 1em;
           text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.75);
+          text-transform: lowercase;
           width: 100%;
 
           &:active {
@@ -298,6 +299,53 @@ nav {
   }
 }
 
+.admin-header {
+  background: #555;
+  @include background-image(linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)));
+  @include legacy-pie-clearfix;
+  @include box-shadow(
+    0 -1px 1px rgba(0, 0, 0, 0.95),
+    0 2px 7px rgba(0, 0, 0, 0.15)
+  );
+
+  a {
+    @include box-shadow(-1px 0 0 rgba(0, 0, 0, 0.55) inset);
+    display: block;
+    float: left;
+    padding: 0.5em 1em;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    color: #eee;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.85);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .admin-sign-out {
+    float: right;
+    @include box-shadow(-1px 0 0 rgba(0, 0, 0, 0.55));
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    border-right: none;
+  }
+
+  @include respond-to-max(fullsize) {
+    display: none;
+  }
+}
+
+.mobile-admin-links {
+  display: none;
+
+  .admin-sign-out {
+    color: white;
+  }
+
+  @include respond-to-max(fullsize) {
+    display: block;
+  }
+}
+
 .welcome-message-intro {
   @include respond-to-min(26.125em) {
     font-size: 1.6em;
@@ -335,5 +383,69 @@ nav {
     &:last-child {
       margin-right: 0;
     } 
+  }
+}
+
+@include respond-to-max(fullsize) {
+
+  body.journal_entries {
+
+    .current-date-heading {
+      font-size: 1.5em;
+      padding: 0.5em 0 0.75em;
+    }
+
+    .date-nav {
+      display: none;
+    }
+
+    .date-nav-mobile {
+      display: block;
+      text-align: center;
+      font-size: 0;
+      margin-top: 20px;
+
+      a {
+        @include box-sizing(border-box);
+        @include border-radius(5px);
+        @include box-shadow(
+          0 2px 5px rgba(0, 0, 0, 0.1),
+          0 -1px 2px rgba(0, 0, 0, 0.2) inset
+        );
+        background: #5F80A3;
+        color: white;
+        cursor: pointer;
+        font-family: sans-serif;
+        font-size: 14px;
+        padding: 0.5em 1em;
+        text-align: center;
+        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.75);
+        width: 45%;
+
+        &:first-child {
+          @include border-radius(5px 0 0 5px);
+        }
+
+        &:last-child {
+          @include border-radius(0 5px 5px 0);
+        }
+      }
+    }
+  }
+
+  .content-panel h2 {
+    font-size: 1.5em;
+  }
+
+  .content-panel__contents {
+    padding: 1em;
+  }
+
+  form {
+
+    .text-field {
+      font-size: 1em;
+      padding: 0.5em;
+    }
   }
 }

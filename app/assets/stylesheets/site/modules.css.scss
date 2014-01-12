@@ -31,6 +31,57 @@ a {
 //   }
 // }
 
+form {
+
+  .field {
+    label {
+      display: block;
+      font-family: "Arvo";
+      font-size: 1.25em;
+      color: #5F80A3;
+    }
+  }
+
+  .text-field {
+    border-radius: 5px;
+    border: 0;
+    @include box-shadow(
+      1px 1px 5px rgba(0, 0, 0, 0.1) inset,
+      -1px -1px 1px rgba(0, 0, 0, 0.15)
+    );
+    font-size: 1.15em;
+    font-family: "Questrial";
+    color: #456E99;
+    padding: 0.75em;
+    -webkit-appearance: none;
+  }
+  
+  .actions {
+
+    .cancel-link {
+      color: #D34747;
+    }
+
+    .submit {
+      @include box-sizing(border-box);
+      @include border-radius(5px);
+      @include box-shadow(
+        0 2px 5px rgba(0, 0, 0, 0.1),
+        0 -1px 2px rgba(0, 0, 0, 0.2) inset
+      );
+      border: none;
+      background: #5F80A3;
+      color: white;
+      cursor: pointer;
+      font-family: sans-serif;
+      font-size: 1.25em;
+      padding: 0.35em 1em 0.5em;
+      text-align: center;
+      text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.75);
+    }
+  }
+}
+
 
 .site-title {
   padding-bottom: 0;
@@ -643,6 +694,10 @@ body.journal_entries {
     }
   }
 
+  .date-nav-mobile {
+    display: none;
+  }
+
   .entry {
     position: relative;
     min-height: 5.5em;
@@ -650,6 +705,38 @@ body.journal_entries {
     margin-bottom: 1.5em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.75));
+    @include legacy-pie-clearfix;
+
+    .date {
+      @include border-radius(3px);
+      @include box-shadow(
+        0 -1px 1px rgba(0, 0, 0, 0.2) inset,
+        0 1px 5px rgba(0, 0, 0, 0.15)
+      );
+      float: left;
+      margin-right: 1em;
+      margin-bottom: 1em;
+      background: #CBD3DB;
+      text-align: center;
+      padding: 0.5em /*0.5em 0.25em*/;
+
+      span {
+        margin: 0;
+        text-shadow: 1px 1px rgba(255, 255, 255, 0.3);
+        line-height: 1em;
+        display: block;
+      }
+
+      .year {
+        font-family: "Arvo";
+        font-size: 1em;
+      }
+
+      .day {
+        font-family: sans-serif;
+        font-size: 0.9em;
+      }
+    }
   }
 
   .entry-year {
@@ -664,10 +751,26 @@ body.journal_entries {
     }
   }
 
-  .entry-content {
-    margin-left: 2em;
-  }
+  .edit-controls {
+    @include legacy-pie-clearfix;
+    text-align: right;
 
+    .edit-button {
+      @include box-sizing(border-box);
+      @include border-radius(5px);
+      @include box-shadow(
+        0 2px 5px rgba(0, 0, 0, 0.1),
+        0 -1px 2px rgba(0, 0, 0, 0.2) inset
+      );
+      background: #5F80A3;
+      color: white;
+      font-family: sans-serif;
+      font-size: 0.75em;
+      padding: 0.35em 1em;
+      text-align: center;
+      text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.75);
+    }
+  }
 
 }
 

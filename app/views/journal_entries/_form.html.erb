@@ -11,19 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
+  <div class="field date-select-field">
+    <%= f.label :date %>
+    <%= f.date_select :date, :order => [:month, :day, :year] %>
   </div>
   <div class="field">
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
+    <%= f.label :author %>
+    <%= f.text_field :author, :value => "MK", :class => "text-field" %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.label :content %>
+    <%= f.text_area :content, :class => "text-field" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to "cancel", :back, :class => "cancel cancel-link" %>
+    <%= f.submit "create", :class => "submit" %>
   </div>
 <% end %>

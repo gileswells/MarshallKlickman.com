@@ -4,6 +4,11 @@
     <span class="date-nav prev"> <%= link_to "< yesterday", "/journal/goto_date?full_date=#{@selected_date.yesterday}" %> </span>
     <%= @selected_date.strftime("%B #{@selected_date.day.ordinalize}") %>
     <span class="date-nav next"> <%= link_to "tomorrow >", "/journal/goto_date?full_date=#{@selected_date.tomorrow}" %> </span>
+
+    <div class="date-nav-mobile">
+      <%= link_to "< yesterday", "/journal/goto_date?full_date=#{@selected_date.yesterday}" %>
+      <%= link_to "tomorrow >", "/journal/goto_date?full_date=#{@selected_date.tomorrow}" %>      
+    </div>
   </h3>
   <div class="content-panel__contents">
 
