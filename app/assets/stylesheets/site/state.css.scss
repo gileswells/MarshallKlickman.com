@@ -6,11 +6,12 @@ html.js-ready {
 
   .fixed-site-background {
     background: image-url('site-background.jpg') top left;
+    background-size: cover;
     display: block;
     position: fixed;
     top: 0;
-    width: 1600px;
-    height: 1200px;
+    width: 100%;
+    height: 100%;
     z-index: -1
   }
 
