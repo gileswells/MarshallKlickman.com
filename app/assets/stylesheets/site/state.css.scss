@@ -433,6 +433,23 @@ nav {
     }
   }
 
+  .content-panel {
+
+    form {
+
+      .date-select-field select {
+        font-size: 1em;
+
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+          margin: auto;
+          width: auto;
+        }
+      }
+    }
+  }
+
   .content-panel h2 {
     font-size: 1.5em;
   }
