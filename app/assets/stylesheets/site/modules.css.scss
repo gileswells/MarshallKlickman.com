@@ -50,8 +50,8 @@ form {
       -1px -1px 1px rgba(0, 0, 0, 0.15)
     );
     font-size: 1.15em;
-    font-family: "Questrial";
-    color: #456E99;
+    font-family: sans-serif;
+    color: #444444;
     padding: 0.75em;
     -webkit-appearance: none;
   }
@@ -716,7 +716,7 @@ body.journal_entries {
       );
       float: left;
       margin-right: 1em;
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
       background: #CBD3DB;
       text-align: center;
       padding: 0.5em /*0.5em 0.25em*/;
@@ -738,6 +738,12 @@ body.journal_entries {
         font-size: 0.9em;
       }
     }
+
+    .entry-content {
+      font-family: "Questrial";
+      line-height: 1.3em;
+      font-size: 1.1em;
+    }
   }
 
   .entry-year {
@@ -754,6 +760,7 @@ body.journal_entries {
 
   .edit-controls {
     @include legacy-pie-clearfix;
+    margin-top: 1em;
     text-align: right;
 
     .edit-button {
