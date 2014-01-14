@@ -6,5 +6,9 @@ $(document).on('ready', function() {
       $(this).submit();
     });
 
+    window.onbeforeunload = function() {
+      return "You have unsaved changes!";
+    };
+
   }
 });
