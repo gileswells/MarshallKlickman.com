@@ -62,7 +62,7 @@ class JournalEntriesController < SiteController
 
     respond_to do |format|
       if @journal_entry.update_attributes(params[:journal_entry])
-        format.html { redirect_to @journal_entry, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to journal_entries_path, notice: 'Journal entry was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

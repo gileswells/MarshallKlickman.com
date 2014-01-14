@@ -25,6 +25,10 @@
   </div>
   <div class="actions">
     <%= link_to "cancel", :back, :class => "cancel cancel-link" %>
-    <%= f.submit "create", :class => "submit" %>
+    <% if params[:action] == "new" %>
+      <%= f.submit "create", :class => "submit" %>
+    <% else %>
+      <%= f.submit "update", :class => "submit" %>
+    <% end %>
   </div>
 <% end %>
