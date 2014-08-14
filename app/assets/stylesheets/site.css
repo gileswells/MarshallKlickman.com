@@ -13,4 +13,5 @@
  *= require site/layout
  *= require site/modules
  *= require site/state
+ *= require site/calendar
 */ 

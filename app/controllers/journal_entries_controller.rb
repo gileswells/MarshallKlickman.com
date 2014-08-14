@@ -13,6 +13,12 @@ class JournalEntriesController < SiteController
 
   end
 
+  def calendar
+    @journal_entries = JournalEntry.all
+    @journal_entries_by_date = @journal_entries.group_by(&:date)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+  end
+
   def goto_date
     
     if params[:full_date]
@@ -28,7 +34,7 @@ class JournalEntriesController < SiteController
   end
 
   def new
-    @journal_entry = JournalEntry.new
+    @journal_entry = JournalEntry.new(params[:journal_entry])
 
     respond_to do |format|
       format.html # new.html.erb

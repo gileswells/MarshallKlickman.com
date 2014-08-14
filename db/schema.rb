@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(:version => 20140108041937) do
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
     t.boolean  "draft"
+    t.string   "featured_image_url"
     t.string   "slug"
     t.string   "featured_image_file_name"
     t.string   "featured_image_content_type"
     t.integer  "featured_image_file_size"
     t.datetime "featured_image_updated_at"
-    t.string   "featured_image_url"
     t.boolean  "is_private",                  :default => false
   end
 

@@ -1,0 +1,57 @@
+.calendar {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    font-family: "Lucida Grande", arial, helvetica, sans-serif;
+    font-size: 10px;
+    padding: 6px;
+    border: 1px solid #999;
+  }
+
+  th {
+    background: #DDD;
+    color: #666;
+    text-align: center;
+    width: 14.2857142857143%;
+  }
+
+  td {
+    background: #FFF;
+    color: #777;
+    height: 80px;
+    vertical-align: top;
+    font-size: 16px;
+    position: relative;
+
+    &.today > div.create-entry {
+      background: transparent !important;
+    }
+    
+    & > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 93px;
+      
+      a {
+        display: none;
+      }
+
+      &:hover a {
+        display: block;
+      }
+
+      &.view-entry {
+        background: rgba(0, 255, 0, 0.1);
+      }
+
+    }
+  }
+
+  .notmonth, .notmonth a { color: #CCC; }
+  .today { background-color: #D7F2FF; }
+}
