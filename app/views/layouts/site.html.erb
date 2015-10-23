@@ -56,10 +56,11 @@
             </div><!-- .logo -->
             <a href="#" class="nav-trigger js-nav-trigger">&#9776;</a>
             <nav role="navigation">
-              <%= link_to "posts", posts_path, :class => "nav-item" %>
-              <%= link_to "work", projects_path, :class => "nav-item" %>
-              <%= link_to "about", about_page_path, :class => "nav-item" %>
-
+              <%= link_to "About me", about_page_path, :class => "nav-item" %>
+              <%= link_to "Github", "http://github.com/mklickman", :class => "nav-item", :target => "_blank" %>
+              <%= link_to "Dribbble", "http://dribbble.com/mklickman", :class => "nav-item", :target => "_blank" %>
+              <a class="nav-item" href="http://klickhere.me" target="_blank">Blog</a>
+              
               <% if admin_signed_in? %>
                 <div class="mobile-admin-links">
                   <%= render 'layouts/admin_links' %>

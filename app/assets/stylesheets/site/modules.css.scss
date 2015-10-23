@@ -639,6 +639,24 @@ body.about {
       margin-bottom: 0;
     }
   }
+  
+  .stonecast {
+    background-color: #2A3C41;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));
+    color: #DBDDD1;
+    text-shadow: -1px -1px 0 black;
+    
+    &:hover {
+      background-color: #2C4147;
+    }
+  }
+
+  .blog {
+    background-color: #EF3B5F;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));
+    color: white;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.25);
+  }
 
   .twitter {
     @include bg-grad(#9ae4e8, 5%, 3%);

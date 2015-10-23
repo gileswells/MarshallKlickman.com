@@ -1,8 +1,8 @@
 @import 'compass';
 
 $break-small: 20em;
-$break-max-large: 47.95em;
-$break-large: 48em;
+$break-max-large: 60em;
+$break-large: 60.063em;
 
 @mixin respond-to-min($media) {
   @if $media == handheld {
